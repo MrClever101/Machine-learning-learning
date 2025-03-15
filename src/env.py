@@ -1,8 +1,5 @@
 import numpy as np
-import keras
-import tensorflow as tf
-import matplotlib.pyplot as plt
-import pandas as pd 
+
 
 class Environment():
 
@@ -22,18 +19,19 @@ class Environment():
 
     def generate_random_state(self):
         self.grid = np.random.randint(0,10, (5,5))
-        time = 0
+        self.time = 0
 
     def generate_blank_state(self):
         self.grid = np.zeros((5,5))
-        time = 0
+        self.time = 0
     
     def get_model_input(self) -> np.array:
         """This method returns the model input.
         Returns:
             the state.
         """
-        return list(self.grid.flatten())+ [self.time]
+        return list(self.grid.flatten()/10)+ [self.time/4]
+    
     def get_state_size(self) -> int:
         return 26
     
